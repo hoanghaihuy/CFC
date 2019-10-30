@@ -1,7 +1,12 @@
 #include <iostream>
+#include <typeinfo>
+#include "generateValue.h"
 #include "errors.h"
 #include "const.h"
-#include "generateValue.h"
+#include "codeword.h"
+#include "codeword.cpp"
+#include "mint.h"
+#include "melt.h"
 using namespace std;
 
 int main(int argc, char *argv[]) {
@@ -15,9 +20,30 @@ int main(int argc, char *argv[]) {
         errorHandling(OTHERS_COMMAND_LINE_ERROR);
     } else {
         int seed = atoi(argv[2]);
-        int modulus = atoi(argv[5]);
-        cout << generateMint(seed, modulus) << endl;
-        cout << generateMelt(seed) << endl;
+        int length = atoi(argv[3]);
+        int size = atoi(argv[4]);
+        int modulus = 0;
+
+        Codeword<Mint> codewordMint(length);
+        Codeword<Melt> codewordMelt(length);
+
+        if (atoi(argv[1]) == 0){
+            modulus = atoi(argv[5]);
+            Mint mint(generateMint(seed, modulus));
+            while(codewordMint.push(mint)) {
+                mint = Mint(generateMint(seed, modulus));
+            };
+            codewordMint.findWeight();
+            codewordMint.display();
+        } else {
+            Melt melt(generateMelt(seed));
+            while(codewordMelt.push(melt)) {
+                melt = Melt(generateMelt(seed));
+            };
+            codewordMelt.findWeight();
+            codewordMelt.display();
+        }
+
     }
 
     return 0;

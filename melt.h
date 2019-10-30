@@ -3,12 +3,13 @@
     #include <iostream>
 
     class Melt {
-        int value;
+        friend std::ostream & operator<<(std::ostream&, const Melt&);
+        char value;
         public:
             Melt();
             Melt(char);
             Melt& operator-(Melt&);
-            char getValue();
+            char getValue() { return value; };
     };
 
 #endif
