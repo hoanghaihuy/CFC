@@ -10,6 +10,7 @@
             int weight;
             T *stack;
         public:
+            Codeword();
             Codeword(int);
             ~Codeword() { delete [] stack; }
             bool push(const T&);

@@ -7,6 +7,14 @@
     #include "melt.h"
 
     template<class T>
+    Codeword<T>::Codeword() {
+        size = 10;
+        top = -1;
+        weight = 0;
+        stack = new T[size];
+    }
+
+    template<class T>
     Codeword<T>::Codeword(int n) {
         size = n > 0 ? n : 10;
         top = -1;
