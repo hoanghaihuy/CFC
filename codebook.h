@@ -7,8 +7,9 @@
     class Codebook {
         private:
             std::vector<T> codewordList;
-            int smallestWeight;
             std::vector<std::vector<int>> codewordDistList;
+            int smallestWeight;
+            int smallestDist;
         public:
             void push(T);
             void display();

@@ -25,7 +25,7 @@
             }
         }
         smallestWeight = temp;
-        cout << "The smallest weight: " << smallestWeight << endl;
+        cout << "The minimum weight: " << smallestWeight << endl;
     }
 
     template<class T>
@@ -37,12 +37,18 @@
             codewordDistList.push_back(codewordList[i].getDistance());
         }
 
+        int temp = 0;
         for (int i = 0; i < codewordDistList.size(); i++) {
             for (int j = 0; j < codewordDistList[i].size(); j++) {
                 cout << codewordDistList[i][j] << " ";
+                if (temp == 0 || (codewordDistList[i][j] < temp && codewordDistList[i][j] > 0)) {
+                    temp = codewordDistList[i][j];
+                }
             }
             cout << endl;
         }
+        smallestDist = temp;
+        cout << "The minimum distance: " << smallestDist << endl;
     }
 
 #endif
