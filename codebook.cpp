@@ -16,4 +16,33 @@
         }
     }
 
+    template<class T>
+    void Codebook<T>::findSmallestWeight() {
+        int temp = 0;
+        for (int i = 0; i < codewordList.size(); i++) {
+            if (temp == 0 || (codewordList[i].getWeight() < temp && codewordList[i].getWeight() > 0)) {
+                temp = codewordList[i].getWeight();
+            }
+        }
+        smallestWeight = temp;
+        cout << "The smallest weight: " << smallestWeight << endl;
+    }
+
+    template<class T>
+    void Codebook<T>::calcDist(int modulus) {
+        for (int i = 0; i < codewordList.size(); i++) {
+            for (int j = 0; j < codewordList.size(); j++) {
+                codewordList[i].findDistance(codewordList[j].getSymbolList(), modulus);
+            }
+            codewordDistList.push_back(codewordList[i].getDistance());
+        }
+
+        for (int i = 0; i < codewordDistList.size(); i++) {
+            for (int j = 0; j < codewordDistList[i].size(); j++) {
+                cout << codewordDistList[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+
 #endif

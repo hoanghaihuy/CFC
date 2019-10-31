@@ -8,11 +8,15 @@
         private:
             int weight;
             std::vector<T> symbolList;
+            std::vector<int> distance;
         public:
             Codeword();
             void push(T);
             void findWeight();
-            int distance();
+            int getWeight() { return weight; };
+            void findDistance(std::vector<T>, int = 0);
+            std::vector<int> getDistance() { return distance; };
+            std::vector<T> getSymbolList() { return symbolList; };
             void display();
     };
 

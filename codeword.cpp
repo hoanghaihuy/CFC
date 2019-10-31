@@ -32,6 +32,23 @@
     }
 
     template<class T>
+    void Codeword<T>::findDistance(std::vector<T> other, int modulus) {
+        if (symbolList.size() > 0) {
+            if (typeid(symbolList[0]).name() == typeid(Mint).name()) {
+                int sum = 0;
+                for(int i = 0; i < symbolList.size(); i++) {
+                    T t = symbolList[i] - other[i];
+                    int value = t.getValue() < 0 ? ((t.getValue() % modulus) + modulus) % modulus : t.getValue() % modulus;
+                    sum += value;
+                }
+                distance.push_back(sum);
+            } else {
+
+            }
+        }
+    }
+
+    template<class T>
     void Codeword<T>::display() {
         for (int i = 0; i < symbolList.size(); i++) {
             cout << symbolList[i] << " ";

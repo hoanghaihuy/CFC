@@ -43,6 +43,8 @@ int main(int argc, char *argv[]) {
                 codebookMint.push(codewordMint);
             }
             codebookMint.display();
+            codebookMint.findSmallestWeight();
+            codebookMint.calcDist(modulus);
         } else {
             for (int i = 0; i < size; i++) {
                 Codeword<Melt> codewordMelt;
@@ -55,6 +57,7 @@ int main(int argc, char *argv[]) {
                 codebookMelt.push(codewordMelt);
             }
             codebookMelt.display();
+            codebookMelt.findSmallestWeight();
         }
 
     }
