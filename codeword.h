@@ -10,7 +10,7 @@
             std::vector<T> symbolList;
         public:
             Codeword();
-            void push(T val);
+            void push(T);
             void findWeight();
             int distance();
             void display();

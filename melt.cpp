@@ -1,7 +1,7 @@
 #include "melt.h"
 #include "const.h"
 
-Melt::Melt() : value(0) {};
+Melt::Melt() : value('a') {};
 Melt::Melt(char _value) : value(_value) {};
 Melt& Melt::operator-(Melt& other) {
     value -= other.value;

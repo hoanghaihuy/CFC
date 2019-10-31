@@ -5,6 +5,8 @@
 #include "const.h"
 #include "codeword.h"
 #include "codeword.cpp"
+#include "codebook.h"
+#include "codebook.cpp"
 #include "mint.h"
 #include "melt.h"
 using namespace std;
@@ -24,24 +26,35 @@ int main(int argc, char *argv[]) {
         int size = atoi(argv[4]);
         int modulus = 0;
 
-        Codeword<Mint> codewordMint;
-        Codeword<Melt> codewordMelt;
+
+        Codebook<Codeword<Mint>> codebookMint;
+        Codebook<Codeword<Melt>> codebookMelt;
 
         if (atoi(argv[1]) == 0){
             modulus = atoi(argv[5]);
-            for (int i = 0; i < length; i++) {
-                Mint mint(generateMint(seed, modulus));
-                codewordMint.push(mint);
+            for (int i = 0; i < size; i++) {
+                Codeword<Mint> codewordMint;
+                for (int j = 0; j < length; j++) {
+                    Mint mint;
+                    if (i != 0) mint = Mint(generateMint(seed, modulus));
+                    codewordMint.push(mint);
+                }
+                codewordMint.findWeight();
+                codebookMint.push(codewordMint);
             }
-            codewordMint.findWeight();
-            codewordMint.display();
+            codebookMint.display();
         } else {
-            for (int i = 0; i < length; i++) {
-                Melt melt(generateMelt(seed));
-                codewordMelt.push(melt);
+            for (int i = 0; i < size; i++) {
+                Codeword<Melt> codewordMelt;
+                for (int j = 0; j < length; j++) {
+                    Melt melt;
+                    if (i != 0) melt = Melt(generateMelt(seed));
+                    codewordMelt.push(melt);
+                }
+                codewordMelt.findWeight();
+                codebookMelt.push(codewordMelt);
             }
-            codewordMelt.findWeight();
-            codewordMelt.display();
+            codebookMelt.display();
         }
 
     }

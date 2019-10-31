@@ -13,7 +13,6 @@
 
     template<class T>
     void Codeword<T>::push(T val) {
-        cout << val.getValue() << endl;
         symbolList.push_back(val);
     }
 
@@ -34,11 +33,9 @@
 
     template<class T>
     void Codeword<T>::display() {
-        if (symbolList.size() > 0) {
-            for (int i = 0; i < symbolList.size(); i++) {
-                cout << symbolList[i] << " ";
-            }
-            cout << "\t Weight: " << weight << endl;
+        for (int i = 0; i < symbolList.size(); i++) {
+            cout << symbolList[i] << " ";
         }
+        cout << "\t Weight: " << weight << endl;
     }
 #endif
