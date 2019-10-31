@@ -1,26 +1,19 @@
 #ifndef CODEWORD_H
 #define CODEWORD_H
     #include <iostream>
+    #include <vector>
 
     template<class T>
     class Codeword {
         private:
-            int size;
-            int top;
             int weight;
-            T *stack;
+            std::vector<T> symbolList;
         public:
             Codeword();
-            Codeword(int);
-            ~Codeword() { delete [] stack; }
-            bool push(const T&);
-            bool pop(T&);
+            void push(T val);
             void findWeight();
             int distance();
             void display();
-        private:
-            bool isFull() const { return top == size - 1; }
-            bool isEmpty() const { return top == -1; }
     };
 
 #endif

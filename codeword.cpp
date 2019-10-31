@@ -8,48 +8,25 @@
 
     template<class T>
     Codeword<T>::Codeword() {
-        size = 10;
-        top = -1;
         weight = 0;
-        stack = new T[size];
     }
 
     template<class T>
-    Codeword<T>::Codeword(int n) {
-        size = n > 0 ? n : 10;
-        top = -1;
-        weight = 0;
-        stack = new T[size];
-    }
-
-    template<class T>
-    bool Codeword<T>::push(const T& val) {
-        if (!isFull()) {
-            stack[++top] = val;
-            return true;
-        }
-        return false;
-    }
-
-    template<class T>
-    bool Codeword<T>::pop(T& val) {
-        if (!isEmpty()) {
-            val = stack[top--];
-            return true;
-        }
-        return false;
+    void Codeword<T>::push(T val) {
+        cout << val.getValue() << endl;
+        symbolList.push_back(val);
     }
 
     template<class T>
     void Codeword<T>::findWeight() {
-        if (!isEmpty()) {
-            if (typeid(stack[0]).name() == typeid(Mint).name()) {
-                for (int i = 0; i < size; i++) {
-                    if (stack[i].getValue() != 0) weight++;
+        if (symbolList.size() > 0) {
+            if (typeid(symbolList[0]).name() == typeid(Mint).name()) {
+                for (int i = 0; i < symbolList.size(); i++) {
+                    if (symbolList[i].getValue() != 0) weight++;
                 }
             } else {
-                for (int i = 0; i < size; i++) {
-                    if (stack[i].getValue() != 'a') weight++;
+                for (int i = 0; i < symbolList.size(); i++) {
+                    if (symbolList[i].getValue() != 'a') weight++;
                 }
             }
         }
@@ -57,9 +34,9 @@
 
     template<class T>
     void Codeword<T>::display() {
-        if (!isEmpty()) {
-            for (int i = 0; i < size; i++) {
-                cout << stack[i] << " ";
+        if (symbolList.size() > 0) {
+            for (int i = 0; i < symbolList.size(); i++) {
+                cout << symbolList[i] << " ";
             }
             cout << "\t Weight: " << weight << endl;
         }

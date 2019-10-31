@@ -24,22 +24,22 @@ int main(int argc, char *argv[]) {
         int size = atoi(argv[4]);
         int modulus = 0;
 
-        Codeword<Mint> codewordMint(length);
-        Codeword<Melt> codewordMelt(length);
+        Codeword<Mint> codewordMint;
+        Codeword<Melt> codewordMelt;
 
         if (atoi(argv[1]) == 0){
             modulus = atoi(argv[5]);
-            Mint mint(generateMint(seed, modulus));
-            while(codewordMint.push(mint)) {
-                mint = Mint(generateMint(seed, modulus));
-            };
+            for (int i = 0; i < length; i++) {
+                Mint mint(generateMint(seed, modulus));
+                codewordMint.push(mint);
+            }
             codewordMint.findWeight();
             codewordMint.display();
         } else {
-            Melt melt(generateMelt(seed));
-            while(codewordMelt.push(melt)) {
-                melt = Melt(generateMelt(seed));
-            };
+            for (int i = 0; i < length; i++) {
+                Melt melt(generateMelt(seed));
+                codewordMelt.push(melt);
+            }
             codewordMelt.findWeight();
             codewordMelt.display();
         }
