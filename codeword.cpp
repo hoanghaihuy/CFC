@@ -38,12 +38,18 @@
                 int sum = 0;
                 for(int i = 0; i < symbolList.size(); i++) {
                     T t = symbolList[i] - other[i];
-                    int value = t.getValue() < 0 ? ((t.getValue() % modulus) + modulus) % modulus : t.getValue() % modulus;
+                    int value = t.getDiff() < 0 ? ((t.getDiff() % modulus) + modulus) % modulus : t.getDiff() % modulus;
                     sum += value;
                 }
                 distance.push_back(sum);
             } else {
-
+                int sum = 0;
+                for(int i = 0; i < symbolList.size(); i++) {
+                    T t = symbolList[i] - other[i];
+                    int value = t.getDiff();
+                    sum += value;
+                }
+                distance.push_back(sum);
             }
         }
     }

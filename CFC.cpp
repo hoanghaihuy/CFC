@@ -58,6 +58,7 @@ int main(int argc, char *argv[]) {
             }
             codebookMelt.display();
             codebookMelt.findSmallestWeight();
+            codebookMelt.calcDist();
         }
 
     }
