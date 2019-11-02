@@ -36,11 +36,15 @@
             }
             codewordDistList.push_back(codewordList[i].getDistance());
         }
+    }
 
+    template<class T>
+    void Codebook<T>::findSmallestDist() {
         int temp = 0;
         for (int i = 0; i < codewordDistList.size(); i++) {
             for (int j = 0; j < codewordDistList[i].size(); j++) {
                 cout << codewordDistList[i][j] << " ";
+                // find minimum distance
                 if (temp == 0 || (codewordDistList[i][j] < temp && codewordDistList[i][j] > 0)) {
                     temp = codewordDistList[i][j];
                 }

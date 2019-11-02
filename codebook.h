@@ -15,6 +15,7 @@
             void display();
             void findSmallestWeight();
             void calcDist(int = 0);
+            void findSmallestDist();
     };
 
 #endif
